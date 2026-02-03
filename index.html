@@ -6,21 +6,29 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      text-align: center;
-      margin-top: 100px;
       height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
       overflow: hidden;
+      text-align: center;
     }
 
     h1 {
       font-size: 36px;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+      position: relative;
     }
 
     button {
       font-size: 20px;
       padding: 15px 30px;
       cursor: pointer;
-      position: relative;
     }
 
     #yes {
@@ -36,8 +44,10 @@
 
   <h1 id="question">Will you be my Valentine? ❤️</h1>
 
-  <button id="yes" onclick="yesClicked()">Yes</button>
-  <button id="no" onclick="noClicked()">No</button>
+  <div class="buttons">
+    <button id="yes" onclick="yesClicked()">Yes</button>
+    <button id="no" onclick="noClicked()">No</button>
+  </div>
 
   <script>
     let yesSize = 20;
@@ -50,11 +60,11 @@
     ];
 
     function noClicked() {
-      // Grow YES button
-      yesSize += 10;
+      // YES grows ~5x
+      yesSize *= 5;
       document.getElementById("yes").style.fontSize = yesSize + "px";
 
-      // Change question text
+      // Change text
       if (noClicks < phrases.length) {
         document.getElementById("question").innerText = phrases[noClicks];
       } else {
@@ -79,3 +89,4 @@
 
 </body>
 </html>
+
